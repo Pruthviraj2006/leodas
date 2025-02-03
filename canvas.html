@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Lets start with graphics</title>
+</head>
+<body>
+    <h1>Simple canvas examples</h1>
+    <canvas id="canvas" width="750" height="500" style="border: 1px solid black;"></canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        // Italian flag
+        ctx.strokeStyle = "black"
+        ctx.lineWidth = 1;
+        ctx.strokeRect(0, 0, 300, 150);
+
+        ctx.fillStyle = "blue";
+        ctx.fillRect(0, 0, 100, 150);
+
+        ctx.fillStyle = "red";
+        ctx.fillRect(200, 0, 100, 150);
+
+        // Indian flag
+        ctx.strokeStyle = "black"
+        ctx.lineWidth = 1;
+        ctx.strokeRect(200, 180, 200, 210);
+
+        ctx.fillStyle = "orange";
+        ctx.fillRect(200, 180, 200, 70);
+
+        // Draw circle
+        ctx.beginPath();
+        ctx.arc(300, 285, 30, 0, 2 * Math.PI);
+        ctx.fillStyle = "white";
+        ctx.strokeStyle = "blue"
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = "lightgreen";
+        ctx.fillRect(200, 320, 200, 70);
+
+        // Draw Ashoka Chakra (Wheel)
+        const centerX = 300, centerY = 285, radius = 30;
+        ctx.strokeStyle = "blue";
+        for (let i = 0; i < 24; i++) {
+            let angle = (i * Math.PI) / 12; // 360° divided into 24 parts
+            let x1 = centerX + Math.cos(angle) * 5; // Start point (near center)
+            let y1 = centerY + Math.sin(angle) * 5;
+            let x2 = centerX + Math.cos(angle) * radius; // End point (on edge)
+            let y2 = centerY + Math.sin(angle) * radius;
+
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>
